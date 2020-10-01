@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "./Register.css";
 import PulseLoader from "react-spinners/PulseLoader";
 import { Link, useHistory } from "react-router-dom";
+
 import { auth } from "./firebase";
 
-function Login() {
+function Register() {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState({ email: "", password: "" });
+  const [user, setUser] = useState({ name: "", email: "", password: "" });
 
   const handleOnChange = (e) => {
     setUser({
@@ -16,32 +17,48 @@ function Login() {
     });
   };
 
-  const signIn = (e) => {
+  const register = (e) => {
     e.preventDefault();
     setLoading(true);
+
     auth
-      .signInWithEmailAndPassword(user.email, user.password)
+      .createUserWithEmailAndPassword(user.email, user.password)
       .then((auth) => {
-        history.push("/");
+        auth.user.updateProfile({
+          displayName: user.name,
+        });
+      })
+      .then(() => {
+        // I did this because if I perform the action continuously, the username takes it as its initial value (null)
+        setTimeout(() => {
+          history.push("/");
+        }, 1500);
       })
       .catch((error) => alert(error.message))
-      .then(() => setLoading(false));
+      .then(() => setLoading(true));
   };
 
   return (
-    <div className="login">
+    <div className="register">
       <Link to="/">
         <img
-          className="login__logo"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1280px-Amazon_logo.svg.png"
           alt="amazon-logo"
+          className="register__logo"
         />
       </Link>
 
-      <div className="login__container">
-        <h1>Sign-in</h1>
+      <div className="register__container">
+        <h1>Create Account</h1>
 
-        <form onSubmit={signIn}>
+        <form>
+          <h5>Your name</h5>
+          <input
+            type="text"
+            name="name"
+            value={user.name}
+            onChange={handleOnChange}
+          />
           <h5>E-mail</h5>
           <input
             type="text"
@@ -49,7 +66,6 @@ function Login() {
             value={user.email}
             onChange={handleOnChange}
           />
-
           <h5>Password</h5>
           <input
             type="password"
@@ -58,26 +74,24 @@ function Login() {
             onChange={handleOnChange}
           />
 
-          <button className="login__signInButton">
+          <button onClick={register}>
             {loading ? (
               <PulseLoader size={8} color={"black"} loading={loading} />
             ) : (
-              "Sign In"
+              "Create account on Amazon"
             )}
           </button>
         </form>
 
         <p>
-          By continuing, you agree to AMAZON FAKE CLONE Terms of Use and Privacy
-          Notice.
+          By creating an account, you agree to the Terms of Use and Privacy
+          Notice of AMAZON FAKE CLONE.
         </p>
 
-        <div className="login__newUser">
-          <p>¿Don't you have an account?</p>
-          <Link to="register">
-            <button className="login__registerButton">
-              Create your Amazon Account
-            </button>
+        <div className="register__alreadyAccount">
+          ¿Already have an account?&nbsp;
+          <Link to="/login">
+            <strong>Sign in</strong>
           </Link>
         </div>
       </div>
@@ -85,4 +99,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

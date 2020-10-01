@@ -1,0 +1,82 @@
+.register {
+  background: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register__logo {
+  width: 100px;
+  margin: 20px auto;
+  object-fit: contain;
+}
+
+.register__container {
+  width: 300px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  padding: 20px;
+}
+
+.register__container > h1 {
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.register__container > form > h5 {
+  margin-bottom: 5px;
+}
+
+.register__container > form > input {
+  height: 30px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-radius: 3px;
+  border: 1px solid grey;
+  background-color: white;
+  width: 95%;
+}
+
+.register__container > form > input:focus {
+  border: 2px solid #f0c14b;
+  outline: none;
+}
+
+.register__container > form > button {
+  border-radius: 2px;
+  width: 100%;
+  height: 30px;
+  border: 1px solid;
+  margin-top: 10px;
+  background-image: linear-gradient(white, #f0c14b, #f0c14b);
+  border-color: #a88734 #9c7e31 #846a29;
+}
+
+.register__container > p {
+  margin-top: 20px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.register__alreadyAccount {
+  border-top: 1px solid lightgray;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.register__alreadyAccount > strong {
+  color: #0066c0;
+  cursor: pointer;
+}
+
+a {
+  color: #0066c0;
+  text-decoration: none;
+}
