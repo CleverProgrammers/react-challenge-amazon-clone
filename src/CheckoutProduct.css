@@ -5,7 +5,7 @@
 }
 
 .checkoutProduct__info {
-    padding-left: 20px
+    padding-left: 30px
 }
 
 .checkoutProduct__info > button {
@@ -27,6 +27,6 @@
   }
 
 .checkoutProduct__title {
-    font-size: 17px;
-    font-weight: 800;
+    font-size: 18px;
+    font-weight: 900;
 }
