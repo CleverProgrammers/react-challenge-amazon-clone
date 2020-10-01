@@ -16,7 +16,9 @@
     "react": "^16.13.1",
     "react-currency-format": "^1.0.0",
     "react-dom": "^16.13.1",
+    "react-flip-move": "^3.0.4",
     "react-router-dom": "^5.2.0",
+    "react-spinners": "^0.9.0",
     "react-scripts": "3.4.3"
   },
   "scripts": {
