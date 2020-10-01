@@ -5,13 +5,13 @@
   height: max-content;
 }
 
-.checkout__ad {
+.checkout__add {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 11px;
 }
 
 .checkout__title {
   margin-right: 10px;
   padding: 10px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: px solid lightgray;
 }

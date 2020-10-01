@@ -19,7 +19,7 @@
   display: flex;
   flex: 1;
   align-items: center;
-  border-radius: 24px;
+  border-radius: 26px;
 }
 
 .header__searchInput {
@@ -32,7 +32,7 @@
 .header__searchIcon {
   padding: 5px;
   height: 22px !important;
-  background-color: #cd9042;
+  background-color:blue;
 }
 
 .header__optionLineOne {
