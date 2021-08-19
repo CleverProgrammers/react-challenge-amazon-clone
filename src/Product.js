@@ -1,11 +1,21 @@
 import React from "react";
 import "./Product.css";
 import { useStateValue } from "./StateProvider";
+import swal from 'sweetalert';
+
 
 function Product({ id, title, image, price, rating }) {
   const [{ basket }, dispatch] = useStateValue();
 
   const addToBasket = () => {
+
+    swal({
+      title: "Product Added to cart.",
+      icon: "success",
+      dangerMode: false,
+    })
+
+
     // dispatch the item into the data layer
     dispatch({
       type: "ADD_TO_BASKET",

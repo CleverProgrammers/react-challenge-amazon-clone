@@ -1,11 +1,20 @@
 import React from 'react';
 import './CheckoutProduct.css'
 import { useStateValue } from "./StateProvider";
+import swal from 'sweetalert';
+
 
 function CheckoutProduct({ id, image, title, price, rating, hideButton }) {
     const [{ basket }, dispatch] = useStateValue();
 
     const removeFromBasket = () => {
+
+        swal({
+            title: "Product has been removed from the cart.",
+            icon: "success",
+            dangerMode: true,
+          })
+
         // remove the item from the basket
         dispatch({
             type: 'REMOVE_FROM_BASKET',

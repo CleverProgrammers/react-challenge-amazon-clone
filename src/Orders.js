@@ -29,6 +29,8 @@ function Orders() {
 
     return (
         <div className='orders'>
+        {orders ? (
+            <div>
             <h1>Your Orders</h1>
 
             <div className='orders__order'>
@@ -36,6 +38,13 @@ function Orders() {
                     <Order order={order} />
                 ))}
             </div>
+            </div>
+            
+        ) : (
+            <h2>No orders</h2>
+        )
+    }
+            
         </div>
     )
 }
