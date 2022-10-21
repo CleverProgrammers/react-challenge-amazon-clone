@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Payment.css';
 import { useStateValue } from "./StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "./reducer";
@@ -11,7 +11,7 @@ import { db } from "./firebase";
 
 function Payment() {
     const [{ basket, user }, dispatch] = useStateValue();
-    const history = useHistory();
+    const navigate = useNavigate(); // In react-router-dom v6, useHistory is replaced by useNavigate
 
     const stripe = useStripe();
     const elements = useElements();
@@ -70,7 +70,7 @@ function Payment() {
                 type: 'EMPTY_BASKET'
             })
 
-            history.replace('/orders')
+            navigate('/orders', { replace: true })
         })
 
     }
