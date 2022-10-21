@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
-import SearchIcon from "@material-ui/icons/Search";
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import SearchIcon from '@mui/icons-material/Search';  // material ui dependencies names with new version has changed
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";  // material ui dependencies names with new version has changed
 import { Link } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";

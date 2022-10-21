@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import Header from "./Header";
 import Home from "./Home";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Checkout from "./Checkout";
 import Login from "./Login";
 import Payment from "./Payment";
@@ -45,29 +45,17 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Switch>
-          <Route path="/orders">
-            <Header />
-            <Orders />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/checkout">
-            <Header />
-            <Checkout />
-          </Route>
-          <Route path="/payment">
-            <Header />
-            <Elements stripe={promise}>
-              <Payment />
-            </Elements>
-          </Route>
-          <Route path="/">
-            <Header />
-            <Home />
-          </Route>
-        </Switch>
+        {/* In react-router-dom v6, 'Routes' is used instead of Switch */}
+        <Routes>  
+              <Route path="/orders" element={[<Header />, <Orders />]}/>
+              <Route path="/login" element={<Login />}/>
+              <Route path="/" element={[<Header />, <Home />]}/>
+              <Route path="/checkout" element={[<Header />, <Checkout />]}/>
+              <Route path="/payment" element={[<Header />, 
+              <Elements stripe={promise} >
+                <Payment /> 
+              </Elements> ]}/>
+        </Routes>
       </div>
     </Router>
   );
